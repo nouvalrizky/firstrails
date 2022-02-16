@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_102435) do
+ActiveRecord::Schema.define(version: 2022_02_16_092618) do
+
+  create_table "twitter_accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "username"
+    t.string "image"
+    t.string "token"
+    t.string "secret"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_twitter_accounts_on_user_id"
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
@@ -19,4 +31,5 @@ ActiveRecord::Schema.define(version: 2022_02_05_102435) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "twitter_accounts", "users"
 end
