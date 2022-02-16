@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
             Current.user = User.find_by(id: session[:user_id])
         end
     end
+
+    def require_user_logged_in!
+        redirect_to login_path, alert: "Anda harus login terlebih dahulu!" if Current.user.nil?
+    end
 end

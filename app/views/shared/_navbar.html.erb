@@ -17,7 +17,7 @@
         <li class="nav-item">
           <% if Current.user %>
             <b>Selamat Datang </b>
-            <%= Current.user.email %>
+            <%= link_to  Current.user.email, edit_password_path, class: "nav-link"%>
             <li class="nav-item">
               <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-danger" %>
             </li>

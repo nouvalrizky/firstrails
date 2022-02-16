@@ -10,7 +10,6 @@ class RegistrationController < ApplicationController
             redirect_to root_path, notice: "Successfully created account"
         else 
             render :new, notice: "Successfully created account"
-            
         end
     end
 
