@@ -1,0 +1,28 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <div class="me-auto">
+                <% if unpublished_tweet.published? %>
+                <span class="badge bg-primary mb-2">Published</span>
+                <% else %>
+                <span class="badge bg-secondary mb-2">Unpublished</span>
+                <% end %>
+                <p class="fw-bold">
+                    Scheduled for <%= l unpublished_tweet.publish_at, format: :long %>
+                </p>
+            </div>
+            <div>
+                <%= image_tag unpublished_tweet.twitter_account.image, class: "rounded-circle" %>
+            </div>
+            <div>
+                <%= link_to  "#{unpublished_tweet.twitter_account.username}", "https://twitter.com/#{unpublished_tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p><%= unpublished_tweet.body %></p>
+        <% if unpublished_tweet.published? %>  
+            <%= link_to  "View Tweet", "https://twitter.com/#{unpublished_tweet.twitter_account.username}/status/#{unpublished_tweet.tweet_id}", class: "text-decoration-none" %>
+        <% end %>  
+    </div>
+</div>

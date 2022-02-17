@@ -1,0 +1,33 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <div class="me-auto">
+                <% if tweet.published? %>
+                <span class="badge bg-primary mb-2">Published</span>
+                <% else %>
+                <span class="badge bg-secondary mb-2">Unpublished</span>
+                <% end %>
+                <p class="fw-bold">
+                    Scheduled for <%= l tweet.publish_at, format: :long %>
+                </p>
+            </div>
+            <div>
+                <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+            </div>
+            <div>
+                <%= link_to  "#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p><%= tweet.body %></p>
+        <% if tweet.published? %>  
+            <%= link_to  "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", class: "btn btn-outline-primary btn-sm" %>
+        <% else %>
+            <div class="d-flex">
+                <%= link_to  "Edit Tweet", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm me-2" %>  
+                <%= button_to  "Delete Tweet", tweets_path(tweet), method: :destroy, class: "btn btn-outline-danger btn-sm" %>  
+            </div>
+        <% end %>   
+    </div>
+</div>
