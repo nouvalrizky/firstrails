@@ -1,0 +1,32 @@
+<div class="d-flex flex-column p-3 border rounded my-4">
+    <%= form_with model: tweet, local: true, data: { turbo: false } do |form|%>
+
+        <%= render "shared/form_error", form: form %>
+        <%= form.label :twitter_account_id, "Username" %>
+        <%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {}, {class: "form-control my-2"} %>
+        <%# <%= form.text_field :twiiter_account_id, class: "form-control my-2" %>
+        
+        <%# <%= link_to "Connect a Twitter Account", "/auth/twitter", method: :post, data: {turbo: "false"}, class: "btn btn-outline-primary mb-3" %>
+
+        <%= form.label :body, "Tweets" %>
+        <%= form.text_area :body, class: "form-control my-2" %>
+
+        <%= form.label :publish_at, "Publish Datetime" %>
+        <div class="form-control my-2">
+            <%= form.datetime_select :publish_at %>
+        </div>
+
+        
+
+        
+        <% if form.object.persisted? %>
+            <%= form.submit "Edit Tweet", class: "btn btn-primary mt-4 mb-2" %>
+            <%= button_to  "Delete Tweet", tweet, method: :delete, class: "btn btn-outline-danger mt-4 mb-2", data: {'confirm': "Are you sure?"} %> 
+        <% else %>
+            <%= form.submit "Schedule Tweet", class: "btn btn-primary mt-4 mb-2" %>
+        <% end %>
+        
+
+        
+    <% end %>
+</div>

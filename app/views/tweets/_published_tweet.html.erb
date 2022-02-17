@@ -15,7 +15,7 @@
                 <%= image_tag published_tweet.twitter_account.image, class: "rounded-circle" %>
             </div>
             <div>
-                <%= link_to  "#{published_tweet.twitter_account.username}", "https://twitter.com/#{published_tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
+                <%= link_to  "@#{published_tweet.twitter_account.username}", "https://twitter.com/#{published_tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
             </div>
         </div>
     </div>

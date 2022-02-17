@@ -15,7 +15,7 @@
                 <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
             </div>
             <div>
-                <%= link_to  "#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
+                <%= link_to  "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", class: "nav-link", target: :_blank %>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <% else %>
             <div class="d-flex">
                 <%= link_to  "Edit Tweet", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm me-2" %>  
-                <%= button_to  "Delete Tweet", tweets_path(tweet), method: :destroy, class: "btn btn-outline-danger btn-sm" %>  
+                <%= button_to  "Delete Tweet", tweet, method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: "Are you sure?"} %>  
             </div>
         <% end %>   
     </div>
