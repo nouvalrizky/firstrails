@@ -9,7 +9,7 @@ class RegistrationController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path, notice: "Successfully created account"
         else 
-            render :new, notice: "Successfully created account"
+            render :new
         end
     end
 
