@@ -50,7 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: scheduled_tweets_production
   host: 103.145.226.119
   username: nouvalrz_nouvalrz
   password: Intersellar745
