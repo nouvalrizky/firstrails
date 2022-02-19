@@ -50,7 +50,6 @@ test:
 #
 production:
   <<: *default
-  host: 103.145.226.119
-  username: nouvalrz_nouvalrz
-  password: Intersellar745
-  database: nouvalrz_nouvalrz_scheduled_tweets_production
+  username: <%= ENV["SCHEDULED_TWEETS_DATABASE_USERNAME"] %>
+  password: <%= ENV["SCHEDULED_TWEETS_DATABASE_PASSWORD"] %>
+  database: scheduled_tweets_production
